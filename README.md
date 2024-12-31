@@ -58,3 +58,6 @@ https://drive.google.com/file/d/1h-a4Zw946FFNwTKIcn3T0HXxlNzyXM1y/view?usp=shari
 
 ## License
 The MIT Licence applies to this project. Refer to LICENSE.md
+
+## Contributors
+Ronak Patel, Bryant Ruan, Roy Zhang, Haris Khawja, Ray Wang
