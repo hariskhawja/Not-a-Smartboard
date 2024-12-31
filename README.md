@@ -12,8 +12,7 @@ For this project, you will need:
 
 #### Clone repository
 ```
-git clone https://git.uwaterloo.ca/hkhawja/se101-team-21.git
-cd se101-team-21
+git clone https://github.com/hariskhawja/Not-a-Smartboard.git
 ```
 
 #### Create Python venv
