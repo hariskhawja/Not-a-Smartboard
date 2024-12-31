@@ -10,7 +10,7 @@ For this project, you will need:
 - Monitor/Projector
 - Micro-HDMI to HDMI Cable
 
-#### Clone repository
+#### Clone Repository
 ```
 git clone https://github.com/hariskhawja/Not-a-Smartboard.git
 ```
@@ -59,4 +59,4 @@ https://drive.google.com/file/d/1h-a4Zw946FFNwTKIcn3T0HXxlNzyXM1y/view?usp=shari
 The MIT Licence applies to this project. Refer to LICENSE.md
 
 ## Contributors
-Ronak Patel, Bryant Ruan, Roy Zhang, Haris Khawja, Ray Wang
+Bryant Ruan, Haris Khawja, Ray Wang, Ronak Patel, Roy Zhang
