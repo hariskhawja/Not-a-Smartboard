@@ -1,0 +1,93 @@
+
+<html>
+    <head>
+        <title>Code Editing File {{filename}}</title>
+    </head>
+
+    <body>
+        <h1>Image index {{imageIndex}}</h1>
+        
+        <img id="code-image" src='/static/codeImages_pic_{{ imageIndex }}.png'>
+        <h1 id="no-image-message">Your images will be ready soon</h1>
+        
+        <br/>
+        <button id="prev-image-button", onclick="changeIndex(-1)">Prev Image</button>
+        <button id="next-image-button", onclick="changeIndex(1)">Next Image</button>
+        
+        <br/>
+        <button id="save-progress", onclick="{capturePicture()}">Save Progress</button>
+        
+        <button id="merge-annotations", onclick="{mergeAnnotations()}">Merge Annotations</button>
+        
+        <br/>
+        <a href="/download/{{filename}}" id="download-file">
+            <button>Download File</button>
+        </a>
+
+        <a href="/download-images" id="download-images">
+            <button>Download Image</button>
+        </a>
+        
+        <br/>
+        <br/>
+        <h1>Annotation</h1>
+        <br/>
+        <img id="annotation" src="/static/img_{{imageIndex}}.png" alt="No annotation yet"/>
+
+        <br/>
+        <br/>
+        <h1>Current Camera</h1>
+        <br/>
+        <img id="camera" src="/static/camera_display.png">
+        
+    </body>
+
+    <script>
+        
+        const maxIndex = {{ maxIndex }};
+        const imageIndex = {{ imageIndex }};
+        const reloadTime = 10000;
+        
+        if (maxIndex === 0) {
+            document.getElementById("code-image").style.display = "none"
+            document.getElementById("save-progress").style.display = "none"
+            document.getElementById("merge-annotations").style.display = "none"
+        }
+        else {
+            document.getElementById("no-image-message").style.display = "none"
+        }
+        
+        if (imageIndex <= 0) {
+            document.getElementById("prev-image-button").style.display = "none";
+        }
+        if (imageIndex + 1 >= maxIndex) {
+            document.getElementById("next-image-button").style.display = "none";
+        }
+        
+        setInterval(() => {
+            location.reload();
+        }, 10000);
+
+
+        function changeIndex(delta) {
+            const newIndex = imageIndex + delta;
+            console.log(newIndex)
+            window.location.href=`/code/{{ filename }}/${newIndex}`
+        }
+
+        function capturePicture() {
+            fetch(`/capturePicture/{{ filename }}/${imageIndex}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => alert(data.message))
+                .catch(error => console.error('Error:', error));
+        }
+        
+        function mergeAnnotations() {
+            fetch(`/mergeAnnotations/{{ filename }}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => alert(data.message))
+                .catch(error => console.error('Error:', error));
+        }
+
+        </script>
+</html>
